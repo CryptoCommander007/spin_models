@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner de Carga - Modelo Adaptado</title>
+    <style>
+        .a7b8c9d0e1f2spin-loading-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #075c6b, #045da7); /* Fondo con gradiente naranja a rosado */
+        }
+
+        .a7b8c9d0e1f2spin-spinner-container, .a7b8c9d0e1f2spin-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .a7b8c9d0e1f2spin-spinner {
+            width: 48px;
+            height: 48px;
+            position: relative;
+        }
+
+        .a7b8c9d0e1f2spin-spinner::before, .a7b8c9d0e1f2spin-spinner::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 48em;
+            height: 48em;
+            background-image:
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0), /* Azul claro */
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0),
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0),
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0),
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0),
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0),
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0),
+                radial-gradient(circle 10px, #add8e6 100%, transparent 0);
+            background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+                                 13em -13em, -13em -13em, 13em 13em, -13em 13em;
+            background-repeat: no-repeat;
+            font-size: 0.5px;
+            border-radius: 50%;
+            animation: a7b8c9d0e1f2spin-blast 1s ease-in infinite;
+        }
+
+        .a7b8c9d0e1f2spin-spinner::after {
+            font-size: 1px;
+            background: #add8e6; /* Azul claro */
+            animation: a7b8c9d0e1f2spin-bounce 1s ease-in infinite;
+        }
+
+        @keyframes a7b8c9d0e1f2spin-bounce {
+            0%, 100% { font-size: 0.75px }
+            50% { font-size: 1.5px }
+        }
+
+        @keyframes a7b8c9d0e1f2spin-blast {
+            0%, 40% {
+                font-size: 0.5px;
+            }
+            70% {
+                opacity: 1;
+                font-size: 4px;
+            }
+            100% {
+                font-size: 6px;
+                opacity: 0;
+            }
+        }
+
+        .a7b8c9d0e1f2spin-content {
+            display: none;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="a7b8c9d0e1f2spin-loading-body">
+    <div class="a7b8c9d0e1f2spin-spinner-container">
+        <div class="a7b8c9d0e1f2spin-spinner"></div>
+    </div>
+    <div class="a7b8c9d0e1f2spin-content">
+        <h1>Hola Mundo</h1>
+    </div>
+
+    <script>
+        // Ocultar el spinner y mostrar el contenido después de 3 segundos
+        setTimeout(() => {
+            document.querySelector('.a7b8c9d0e1f2spin-spinner-container').style.display = 'none';
+            document.querySelector('.a7b8c9d0e1f2spin-content').style.display = 'flex';
+            document.body.classList.remove('a7b8c9d0e1f2spin-loading-body'); // Remove loading-body class
+        }, 3000);
+    </script>
+</body>
+</html>

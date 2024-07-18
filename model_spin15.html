@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner de Carga - Modelo Adaptado</title>
+    <style>
+        .u1v2w3x4y5z6spin-loading-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #375057, #222231); /* Fondo con gradiente verde a azul */
+        }
+
+        .u1v2w3x4y5z6spin-spinner-container, .u1v2w3x4y5z6spin-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .u1v2w3x4y5z6spin-spinner {
+            display: inline-block;
+            transform: translateZ(1px);
+        }
+
+        .u1v2w3x4y5z6spin-spinner:after {
+            content: '';
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            margin: 8px;
+            border-radius: 50%;
+            background: #fff; /* Blanco */
+            animation: u1v2w3x4y5z6spin-coin-flip 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+
+        @keyframes u1v2w3x4y5z6spin-coin-flip {
+            0%, 100% {
+                animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+            }
+            0% {
+                transform: rotateY(0deg);
+            }
+            50% {
+                transform: rotateY(1800deg);
+                animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+            }
+            100% {
+                transform: rotateY(3600deg);
+            }
+        }
+
+        .u1v2w3x4y5z6spin-content {
+            display: none;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="u1v2w3x4y5z6spin-loading-body">
+    <div class="u1v2w3x4y5z6spin-spinner-container">
+        <div class="u1v2w3x4y5z6spin-spinner"></div>
+    </div>
+    <div class="u1v2w3x4y5z6spin-content">
+        <h1>Hola Mundo</h1>
+    </div>
+
+    <script>
+        // Ocultar el spinner y mostrar el contenido después de 3 segundos
+        setTimeout(() => {
+            document.querySelector('.u1v2w3x4y5z6spin-spinner-container').style.display = 'none';
+            document.querySelector('.u1v2w3x4y5z6spin-content').style.display = 'flex';
+            document.body.classList.remove('u1v2w3x4y5z6spin-loading-body'); // Remove loading-body class
+        }, 3000);
+    </script>
+</body>
+</html>

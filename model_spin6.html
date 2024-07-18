@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner de Carga con Mensaje - Modelo Adaptado</title>
+    <style>
+        .n4m5o6p7q8r9spin-loading-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #800080, #0000ff); /* Fondo con gradiente morado a azul */
+        }
+
+        .n4m5o6p7q8r9spin-spinner-container, .n4m5o6p7q8r9spin-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .n4m5o6p7q8r9spin-spinner {
+            width: 48px;
+            height: 48px;
+            position: relative;
+        }
+
+        .n4m5o6p7q8r9spin-spinner::before, .n4m5o6p7q8r9spin-spinner::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 48em;
+            height: 48em;
+            background-image:
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0), /* Rosa */
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0),
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0),
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0),
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0),
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0),
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0),
+                radial-gradient(circle 10px, #FFC0CB 100%, transparent 0);
+            background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+                                 13em -13em, -13em -13em, 13em 13em, -13em 13em;
+            background-repeat: no-repeat;
+            font-size: 0.5px;
+            border-radius: 50%;
+            animation: n4m5o6p7q8r9spin-blast 1s ease-in infinite;
+        }
+
+        .n4m5o6p7q8r9spin-spinner::after {
+            font-size: 1px;
+            background: #FFC0CB; /* Rosa */
+            animation: n4m5o6p7q8r9spin-bounce 1s ease-in infinite;
+        }
+
+        @keyframes n4m5o6p7q8r9spin-bounce {
+            0%, 100% { font-size: 0.75px }
+            50% { font-size: 1.5px }
+        }
+
+        @keyframes n4m5o6p7q8r9spin-blast {
+            0%, 40% {
+                font-size: 0.5px;
+            }
+            70% {
+                opacity: 1;
+                font-size: 4px;
+            }
+            100% {
+                font-size: 6px;
+                opacity: 0;
+            }
+        }
+
+        .n4m5o6p7q8r9spin-content {
+            display: none;
+            flex-direction: column;
+        }
+
+        .n4m5o6p7q8r9spin-overlay-message {
+            font-size: 24px;
+            color: #FFFF00; /* Letras en amarillo */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="n4m5o6p7q8r9spin-loading-body">
+    <div class="n4m5o6p7q8r9spin-overlay-message">paginaweb.com</div>
+    <div class="n4m5o6p7q8r9spin-spinner-container">
+        <div class="n4m5o6p7q8r9spin-spinner"></div>
+    </div>
+    <div class="n4m5o6p7q8r9spin-content">
+        <h1>Hola Mundo</h1>
+    </div>
+
+    <script>
+        // Ocultar el spinner y mostrar el contenido después de 3 segundos
+        setTimeout(() => {
+            document.querySelector('.n4m5o6p7q8r9spin-spinner-container').style.display = 'none';
+            document.querySelector('.n4m5o6p7q8r9spin-overlay-message').style.display = 'none';
+            document.querySelector('.n4m5o6p7q8r9spin-content').style.display = 'flex';
+            document.body.classList.remove('n4m5o6p7q8r9spin-loading-body'); // Remove loading-body class
+        }, 3000);
+    </script>
+</body>
+</html>
